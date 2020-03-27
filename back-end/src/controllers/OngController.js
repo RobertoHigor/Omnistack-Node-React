@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection')
 
 // Listar
@@ -13,7 +13,7 @@ module.exports = {
     async create(request, response) {       
         const {name, email, whatsapp, city, uf} = request.body;
 
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         //Como o insert pode demorar um pouco, é preciso retornar o resultado só depois de finalizado
         //await faz com que o Node aguarde o código await finalizar para continuar.
